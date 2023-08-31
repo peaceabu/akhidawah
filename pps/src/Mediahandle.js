@@ -84,11 +84,21 @@ const Mediahanle = () => {
           </div>
         )}
         {uploadSuccess && <p className="success-message">Image uploaded successfully!</p>}
-
+<div className='ImgCat'>
       <div className='ViewImgOptions'>
       <h1>Latest Images</h1>
       <button onClick={navigateToImageGallery}>View Images</button>
     </div>
+    
+          <div className='ViewQuranOptions'>
+          <h1>Quran Verses</h1>
+          <button onClick={navigateToImageGallery}>View Images</button>
+        </div>
+        <div className='ViewWallpaperOptions'>
+        <h1>Islamic Wallpapers</h1>
+        <button onClick={navigateToImageGallery}>View Images</button>
+      </div>
+      </div>
       </header>
     </div>
 

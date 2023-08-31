@@ -13,11 +13,125 @@ img {
  .image-style {
   width: 50px;
   height: 50px;
+  z-index: 1;
 }
-/* .imgfile{
-  width: auto;
-  height: 50px;
-} */
+.ImgCat {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 20px;
+  justify-content: space-evenly; 
+}
+
+/* Styles for the container with background image */
+.ViewImgOptions {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20230729_195927.jpg?alt=media&token=1ad8e0b2-8492-4198-97d0-490455e56614');
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+}
+
+/* Pseudo-element for dimming effect */
+.ViewImgOptions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* Styles for the container with background image */
+.ViewQuranOptions {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20230825_213643.jpg?alt=media&token=2badd179-5753-41c4-b4b0-69b77c0c0c51');
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+}
+
+/* Pseudo-element for dimming effect */
+.ViewQuranOptions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ViewWallpaperOptions {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20201229_005400.jpg?alt=media&token=c4f43404-4b20-4cf3-af16-dcfe14f124f3');
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+}
+
+/* Pseudo-element for dimming effect */
+.ViewWallpaperOptions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+/* Styles for the heading and button inside containers */
+.ViewImgOptions h1,
+.ViewQuranOptions h1,
+.ViewWallpaperOptions h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);	
+  position: relative; /* Adjust position to appear above pseudo-element */	
+  z-index: 1; /* Ensure it's above the pseudo-element */
+}
+
+/* Styles for the button */
+.ViewImgOptions button,
+.ViewQuranOptions button,
+.ViewWallpaperOptions button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative; /* Adjust position to appear above pseudo-element */	
+  z-index: 1; /* Ensure it's above the pseudo-element */
+}
+
+.ViewImgOptions button:hover,
+.ViewQuranOptions button:hover,
+.ViewWallpaperOptions button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
 .uploadDiv {
   display: flex; /* Use flex display */
   align-items: center; /* Center vertically within the flex container */
@@ -31,8 +145,11 @@ img {
 /* .mainDiv{
   display: none;
 } */
+
 .App-header {
-  background-color: #000000;
+  position: relative;
+  background: linear-gradient(rgba(12, 12, 12, 0.6), rgba(226, 227, 230, 0.19)),
+              url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20200313_232948.png?alt=media&token=7913ab50-148b-41bd-9c92-5c36833b03e9') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,11 +157,46 @@ img {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(248, 248, 248);
+  backdrop-filter: blur(10px); /* Apply backdrop filter for the glass effect */
+}
+
+/* Pseudo-element for the background overlay */
+.App-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
 }
 
 .App-link {
   color: #61dafb;
 }
+
+/* Styles for the HeaderCls container */
+.HeaderCls {
+
+  background-color: #f5f5f5; /* Adjust to match your theme */
+  padding: 10px;
+  
+}
+
+/* Styles for h1 elements within HeaderCls */
+.HeaderCls h1 {
+  font-size: 32px; /* Adjust to match your theme */
+  color: #333; /* Adjust to match your theme */
+  margin-bottom: 10px;
+}
+
+/* Styles for h2 elements within HeaderCls */
+.HeaderCls h2 {
+  font-size: 24px; /* Adjust to match your theme */
+  color: #666; /* Adjust to match your theme */
+  margin-bottom: 10px;
+}
+
 
 @keyframes App-logo-spin {
   from {
