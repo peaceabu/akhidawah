@@ -10,14 +10,18 @@ img {
   width: 200px;
   margin: 10px;
 }
-/* .image-style {
+ .image-style {
   width: 50px;
   height: 50px;
 }
-.imgfile{
+/* .imgfile{
   width: auto;
   height: 50px;
 } */
+.uploadDiv {
+  display: flex; /* Use flex display */
+  align-items: center; /* Center vertically within the flex container */
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

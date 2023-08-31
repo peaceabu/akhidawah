@@ -4,7 +4,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
 import './App.css';
-
+import { Link, useNavigate } from 'react-router-dom';
 // Initialize Firebase with your configuration
 
 const firebaseConfig = {
@@ -18,10 +18,17 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+
+
 const Mediahanle = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
+  const navigate = useNavigate();
+
+  const navigateToImageGallery = () => {
+    navigate('/image-gallery');
+  };
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
@@ -53,9 +60,23 @@ const Mediahanle = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Image Gallery</h1>
-        <input type="file" onChange={handleFileUpload} />
-        {/* <img src={'/plus.png'} alt="PNG Image" className="image-style" onClick={handleImg}/> */}
+        <h1>Islamic Image Gallery</h1>
+        <p>{'Narrated `Abdullah bin `Amr, “The Prophet (ﷺ) said, "Convey (my teachings) to the people even if it were a single sentence'}</p>
+        <p>{"Sahih al Bukhaari, Book of Prophets, hadith-3461."}</p>
+
+        <div className='uploadDiv'>
+           {'Upload Image'}
+        <label htmlFor="fileInput" className="custom-file-input">
+        <img src={'/plus.png'} alt="PNG Image" className="image-style" />
+        <input
+          type="file"
+          id="fileInput"
+          onChange={handleFileUpload}
+          style={{ display: 'none' }} />
+         
+      </label>
+     
+      </div>
         {selectedFile && (
           <div>
             <p>Selected File: {selectedFile.name}</p>
@@ -63,8 +84,14 @@ const Mediahanle = () => {
           </div>
         )}
         {uploadSuccess && <p className="success-message">Image uploaded successfully!</p>}
+
+      <div className='ViewImgOptions'>
+      <h1>Latest Images</h1>
+      <button onClick={navigateToImageGallery}>View Images</button>
+    </div>
       </header>
     </div>
+
   );
 }
 

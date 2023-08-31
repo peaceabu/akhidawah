@@ -4,10 +4,10 @@ const Header = () => {
     
   return (
     <header>
-        <h1>
-            To-Do List
-        </h1>
-        
+        <h2>
+            In The Name of Allah
+        </h2>
+        <h1>Akhi Dawah</h1>
     </header>
    
   )

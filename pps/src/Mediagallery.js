@@ -41,7 +41,7 @@ const ImageGallery = () => {
   }, []);
 
   return (
-    <div className="image-style">
+    <div >
       {imageUrls.map((url, index) => (
         <img key={index} src={url} alt={`Image ${index}`} />
       ))}

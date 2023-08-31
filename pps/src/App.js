@@ -5,16 +5,24 @@ import Content from './Content';
 import Footer from './Footer';
 import Mediahanle from './Mediahandle';
 import ImageGallery from './Mediagallery';
+import { BrowserRouter as Router, Route, Redirect, Routes } from 'react-router-dom';
 
 function App() {
 
   return (
+    <Router>
     <div className='App'>
       <Header />
       <Mediahanle />
-      <ImageGallery />      
+      <Routes>
+        <Route path="/image-gallery" element={<ImageGallery />} />
+        {/* Other routes if needed */}
+      </Routes>
       <Footer />
     </div>
+  </Router>
+
+
 
   );
 }
