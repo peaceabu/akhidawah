@@ -1,73 +1,92 @@
-import React,{ useState } from 'react'
-import {FaTrash} from "react-icons/fa";
+import React, { useState } from 'react';
+import firebase from 'firebase/compat/app';
 
-export const Content = () => {
-    const [items, setItems] = useState([
-      {_id:1,
-        booleanval:true,
-        name:"Learn React"
-        },{_id:2,
-          booleanval:true,
-          name:"Pray All Fard"
-          },
-          {_id:3,
-            booleanval:true,
-            name:"Drink kitres water"
-            }
-      ]
-      )
-    // const [isVisible, InVisible] = useState(false);
-    // const [textval, setTexval] = useState('Salam')
-    // const handleImg = () => {
-    //     console.log('Clicked')
-    //     InVisible(!isVisible);
-    //     eventchange()
-    // }
-    // const eventchange = () => {    
-    //   const names = ["Salam","Hi","Hello"];
-    //   const int = Math.floor(Math.random() * 3);
-    //   console.log(int)
-    //   setTexval(names[int])
-    // }
+import 'firebase/compat/storage';
+import 'firebase/compat/database';
+import './Content.css';
+import { Link, useNavigate } from 'react-router-dom';
+// Initialize Firebase with your configuration
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAYP5-fxE-1zVLAuIJWLBQWx5daQCTGXUg",
+  authDomain: "kaswa-1d3ad.firebaseapp.com",
+  projectId: "kaswa-1d3ad",
+  storageBucket: "kaswa-1d3ad.appspot.com",
+  messagingSenderId: "395330435248",
+  appId: "1:395330435248:web:7df5635bbc8474b92ea375",  
+};
+
+firebase.initializeApp(firebaseConfig);
+
+
+
+const Content = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+
+  const navigate = useNavigate();
+
+  const navigateToImageGallery = () => {
+    navigate('/image-gallery');
+  };
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+
+    // Upload the image to Firebase Storage
+    const storageRef = firebase.storage().ref();
+    const imageRef = storageRef.child('images/' + file.name);
+
+    imageRef.put(file).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+      setUploadSuccess(true)
+
+      // Get the image URL
+      imageRef.getDownloadURL().then((url) => {
+        // Save the image reference in the Firebase Realtime Database
+        const databaseRef = firebase.database().ref('images');
+        databaseRef.push(url, (error) => {
+          if (error) {
+            console.error('Error saving image reference:', error);
+          } else {
+            console.log('Image reference saved successfully!');
+            setUploadSuccess(true)
+          }
+        });
+      });
+    });
+  };
+
   return (
-    <main className="App-header">
-      <ul>
-        {items.map((itm) => (
-        <li className='itemcls' key={itm._id}>
-          <input type="checkbox"
-          checked={itm.booleanval}
-          />
-          <label>{itm.name}</label> 
-          <FaTrash role='button' tabIndex="0"/>         
-        </li>
-        ))}
-      </ul>
-    </main>
+    <div className="App">
+      <header className="App-header">
+        <h1>Islamic Image Gallery</h1>
+        <p>{'There is no god but He: That is the witness of Allah, His angels, and those endued with knowledge, standing firm on justice. There is no god but He, the Exalted in Power, the Wise'}</p>
+        <p>{"[Quran, 3:18]."}</p>
 
-  
-  
-  
-    //   <header className="App-header">        
-  //   <p>
-  //     {textval} <code>Peace Page Solutions</code> welcomes you.
-  //   </p>
-  //   <img src={'/plus.png'} alt="PNG Image" className="image-style" onClick={handleImg}/>
-  //   {
-  //       isVisible && <div className='mainDiv'>
-  //       Do Something Here...
-  //   </div>
-  //   }    
-  // </header>
-  )
+
+<div className='ImgCat'>
+      <div className='ViewImgOptions'>
+      <h1>Latest Images</h1>
+      <button onClick={navigateToImageGallery}>View Images</button>
+    </div>
+    
+          <div className='ViewQuranOptions'>
+          <h1>Quran Verses</h1>
+          <button onClick={navigateToImageGallery}>View Images</button>
+        </div>
+        <div className='ViewWallpaperOptions'>
+        <h1>Islamic Wallpapers</h1>
+        <button onClick={navigateToImageGallery}>View Images</button>
+      </div>
+      </div>
+      </header>
+    </div>
+
+  );
 }
 
 
 
 
-// function eventchange() {    
-//     const names = ["Salam","Hi","Hello"];
-//     const int = Math.floor(Math.random() * 3);
-//     console.log(int)
-//     setTexval(names[int])
-//   }
 export default Content

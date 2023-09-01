@@ -41,9 +41,9 @@ const ImageGallery = () => {
   }, []);
 
   return (
-    <div >
+    <div className='galleryDiv'>
       {imageUrls.map((url, index) => (
-        <img key={index} src={url} alt={`Image ${index}`} />
+        <img key={index} src={url} alt={`Image ${index}`} className='img'/>    
       ))}
     </div>
   );

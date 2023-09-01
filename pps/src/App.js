@@ -1,5 +1,5 @@
 import log from './logo.svg';
-import './index.css';
+// import './index.css';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
@@ -13,6 +13,7 @@ function App() {
     <Router>
     <div className='App'>
       <Header />
+      <Content />
       <Mediahanle />
       <Routes>
         <Route path="/image-gallery" element={<ImageGallery />} />

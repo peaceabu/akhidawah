@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
-// import {FaTrash} from "react-icons/fa";
+
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
-import './App.css';
+import './MediaHanle.css';
 import { Link, useNavigate } from 'react-router-dom';
 // Initialize Firebase with your configuration
 
@@ -30,6 +30,7 @@ const Mediahanle = () => {
     navigate('/image-gallery');
   };
   const handleFileUpload = (event) => {
+    console.log('click')
     const file = event.target.files[0];
     setSelectedFile(file);
 
@@ -58,9 +59,9 @@ const Mediahanle = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Islamic Image Gallery</h1>
+    <div className="HandleAppCls">
+      <header className="HandleAppCls-header">
+        <h1>Share Your Work</h1>
         <p>{'Narrated `Abdullah bin `Amr, “The Prophet (ﷺ) said, "Convey (my teachings) to the people even if it were a single sentence'}</p>
         <p>{"Sahih al Bukhaari, Book of Prophets, hadith-3461."}</p>
 
@@ -84,21 +85,7 @@ const Mediahanle = () => {
           </div>
         )}
         {uploadSuccess && <p className="success-message">Image uploaded successfully!</p>}
-<div className='ImgCat'>
-      <div className='ViewImgOptions'>
-      <h1>Latest Images</h1>
-      <button onClick={navigateToImageGallery}>View Images</button>
-    </div>
-    
-          <div className='ViewQuranOptions'>
-          <h1>Quran Verses</h1>
-          <button onClick={navigateToImageGallery}>View Images</button>
-        </div>
-        <div className='ViewWallpaperOptions'>
-        <h1>Islamic Wallpapers</h1>
-        <button onClick={navigateToImageGallery}>View Images</button>
-      </div>
-      </div>
+
       </header>
     </div>
 
