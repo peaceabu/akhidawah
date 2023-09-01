@@ -13,12 +13,12 @@ function App() {
     <Router>
     <div className='App'>
       <Header />
-      <Content />
-      <Mediahanle />
+      <Content />      
       <Routes>
         <Route path="/image-gallery" element={<ImageGallery />} />
         {/* Other routes if needed */}
       </Routes>
+      <Mediahanle />
       <Footer />
     </div>
   </Router>
