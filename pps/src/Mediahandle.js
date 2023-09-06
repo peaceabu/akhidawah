@@ -4,6 +4,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
 import './MediaHanle.css';
+import './Common.css';
 import { Link, useNavigate } from 'react-router-dom';
 // Initialize Firebase with your configuration
 
@@ -60,8 +61,9 @@ const Mediahanle = () => {
 
   return (
     <div className="HandleAppCls">
+      <h1 className='shared-header'>Share Your Work</h1>
       <header className="HandleAppCls-header">
-        <h1>Share Your Work</h1>
+        
         <p>{'Narrated `Abdullah bin `Amr, “The Prophet (ﷺ) said, "Convey (my teachings) to the people even if it were a single sentence'}</p>
         <p>{"Sahih al Bukhaari, Book of Prophets, hadith-3461."}</p>
 

@@ -21,9 +21,10 @@ const Header = () => {
       </button>
       <nav className={`NavOptions ${isNavOpen ? 'NavOpen' : ''}`}>
         <ul className="h-menu">
-          <li><a href="">Home</a></li>
-          <li><a href="">Category</a></li>
-          <li><a href="">About</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/category">Category</a></li>
+          <li><a href="/contribute">Contribute</a></li>
+          <li><a href="/about">About</a></li>
         </ul>
       </nav>
     </div>

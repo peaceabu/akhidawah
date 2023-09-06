@@ -4,82 +4,30 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
 import './Content.css';
-import { Link, useNavigate } from 'react-router-dom';
-// Initialize Firebase with your configuration
+import './Common.css';
+// import { Link, useNavigate } from 'react-router-dom';
+// import firebaseConfig from './firebaseConfig';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAYP5-fxE-1zVLAuIJWLBQWx5daQCTGXUg",
-  authDomain: "kaswa-1d3ad.firebaseapp.com",
-  projectId: "kaswa-1d3ad",
-  storageBucket: "kaswa-1d3ad.appspot.com",
-  messagingSenderId: "395330435248",
-  appId: "1:395330435248:web:7df5635bbc8474b92ea375",  
-};
 
-firebase.initializeApp(firebaseConfig);
+
+// firebase.initializeApp(firebaseConfig);
 
 
 
 const Content = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
-
-  const navigate = useNavigate();
-
-  const navigateToImageGallery = () => {
-    navigate('/image-gallery');
-  };
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-
-    // Upload the image to Firebase Storage
-    const storageRef = firebase.storage().ref();
-    const imageRef = storageRef.child('images/' + file.name);
-
-    imageRef.put(file).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-      setUploadSuccess(true)
-
-      // Get the image URL
-      imageRef.getDownloadURL().then((url) => {
-        // Save the image reference in the Firebase Realtime Database
-        const databaseRef = firebase.database().ref('images');
-        databaseRef.push(url, (error) => {
-          if (error) {
-            console.error('Error saving image reference:', error);
-          } else {
-            console.log('Image reference saved successfully!');
-            setUploadSuccess(true)
-          }
-        });
-      });
-    });
-  };
-
   return (
     <div className="App">
+      <h1 className='shared-header'>Islamic Image Gallery</h1>
       <header className="App-header">
-        <h1>Islamic Image Gallery</h1>
-        <p>{'There is no god but He: That is the witness of Allah, His angels, and those endued with knowledge, standing firm on justice. There is no god but He, the Exalted in Power, the Wise'}</p>
-        <p>{"[Quran, 3:18]."}</p>
-
-
-<div className='ImgCat'>
-      <div className='ViewImgOptions'>
-      <h1>Latest Images</h1>
-      <button onClick={navigateToImageGallery}>View Images</button>
+        
+      <div className="quote">
+        <p>"There is no god but He: That is the witness of Allah, His angels, and those endued with knowledge, standing firm on justice. There is no god but He, the Exalted in Power, the Wise  <b>[Quran, 3:18]</b>"</p>
+       
     </div>
-    
-          <div className='ViewQuranOptions'>
-          <h1>Quran Verses</h1>
-          <button onClick={navigateToImageGallery}>View Images</button>
-        </div>
-        <div className='ViewWallpaperOptions'>
-        <h1>Islamic Wallpapers</h1>
-        <button onClick={navigateToImageGallery}>View Images</button>
-      </div>
-      </div>
+    <div className="welcome-message">
+        <p>Welcome to Akhi Dawah, an initiative of the Islamic Research Foundation, where you'll find a diverse collection of Islamic images. Our platform is dedicated to providing a visually inspiring experience that allows you to immerse yourself in high-quality images containing Quranic verses and Hadiths. Explore our extensive collection, organized into various categories, to discover the essence of Islamic aesthetics.</p>
+    </div>
+
       </header>
     </div>
 

@@ -1,0 +1,57 @@
+.About {
+    text-align: center;   
+    background-color: black; 
+    padding-bottom: 20px;
+  }
+
+
+/* Style for the welcome message */
+/* .AboutMsg {
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;    
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgb(101, 209, 238);   
+    background-color: aquamarine;
+  
+    width: 50%;
+    height: auto;
+} */
+
+.AboutMsg {
+    position: relative;
+    text-align: center;
+    color: aliceblue;
+    padding: 20px;    
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgb(217, 217, 218);   
+
+    background-image: linear-gradient(20deg, #1daaa3 0%, #035854 50%, #00211f 100%);
+
+
+    margin: 0 auto;
+    width: 50%;
+    max-width: 400px; /* You can adjust this value based on your design */
+
+    /* Vertically center the content using flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Set a minimum height if needed */
+    min-height: 150px; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+    .AboutMsg p{
+      font-size: 12px;
+      padding: 10px; 
+      
+      /* padding: 20px; */
+    }
+    
+  }
+

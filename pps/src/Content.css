@@ -1,11 +1,8 @@
 .App {
-    text-align: center;    
+    text-align: center;   
+    background-color: black; 
   }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
+
   img {
     width: 200px;
     margin: 10px;
@@ -15,185 +12,56 @@
     height: 50px;
     z-index: 1;
   }
-  .ImgCat {
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    gap: 20px;
-    justify-content: space-evenly; 
-  }
-  
-  /* Styles for the container with background image */
-  .ViewImgOptions {
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20230729_195927.jpg?alt=media&token=1ad8e0b2-8492-4198-97d0-490455e56614');
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 200px;
-  }
-  
-  /* Pseudo-element for dimming effect */
-  .ViewImgOptions::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  
-  /* Styles for the container with background image */
-  .ViewQuranOptions {
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20230825_213643.jpg?alt=media&token=2badd179-5753-41c4-b4b0-69b77c0c0c51');
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 200px;
-  }
-  
-  /* Pseudo-element for dimming effect */
-  .ViewQuranOptions::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  .ViewWallpaperOptions {
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20201229_005400.jpg?alt=media&token=c4f43404-4b20-4cf3-af16-dcfe14f124f3');
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 200px;
-  }
-  
-  /* Pseudo-element for dimming effect */
-  .ViewWallpaperOptions::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  /* Styles for the heading and button inside containers */
-  .ViewImgOptions h1,
-  .ViewQuranOptions h1,
-  .ViewWallpaperOptions h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);	
-    position: relative; /* Adjust position to appear above pseudo-element */	
-    z-index: 1; /* Ensure it's above the pseudo-element */
-  }
-  
-  /* Styles for the button */
-  .ViewImgOptions button,
-  .ViewQuranOptions button,
-  .ViewWallpaperOptions button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    position: relative; /* Adjust position to appear above pseudo-element */	
-    z-index: 1; /* Ensure it's above the pseudo-element */
-  }
-  
-  .ViewImgOptions button:hover,
-  .ViewQuranOptions button:hover,
-  .ViewWallpaperOptions button:hover {
-    background-color: #0056b3;
-  }
-  
-  
-  
-  
-  .uploadDiv {
-    display: flex; /* Use flex display */
-    align-items: center; /* Center vertically within the flex container */
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  /* .mainDiv{
-    display: none;
-  } */
-  
+
   .App-header {
     position: relative;
     background: linear-gradient(rgba(12, 12, 12, 0.6), rgba(0, 0, 0, 0.56)),
-                url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2F20200313_232948.png?alt=media&token=7913ab50-148b-41bd-9c92-5c36833b03e9') center/cover no-repeat;
-    min-height: 100vh;
+                url('https://firebasestorage.googleapis.com/v0/b/kaswa-1d3ad.appspot.com/o/images%2Fbg%2FPi7compressed20200811_140013.png?alt=media&token=87288f2f-f9d1-492a-9c3e-5306ab1acea3') center/cover no-repeat;               
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: rgb(248, 248, 248);
-    backdrop-filter: blur(10px); /* Apply backdrop filter for the glass effect */
-   
+    background-size: 50vh;
   }
-  .App-header h1,
-  .App-header p{
-    color: #ffffff;
-    z-index: 1;
-  }
-  /* Pseudo-element for the background overlay */
+
+
+ 
+/* Pseudo-element for the background overlay */
   .App-header::before {
     content: "";
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(29, 29, 29, 0.2), rgba(16, 16, 16, 0.1));
   }
+
+
+/* Style for the quote */
+.quote{
+  margin: 0 0;
+  font-style: italic;
+  color: #ffffff;
+  box-shadow: #333;
+  z-index: 1;
   
-  .App-link {
-    color: #61dafb;
-  }
+}
+
+/* Style for the Quran reference */
+.quote p:last-child {
   
-  
-  
-  .galleryDiv{
-    display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    gap: 10px;
-    justify-content:space-around;
-  }
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+  margin-top: 1px;
+  padding: 0;
+}
+
+/* Style for the welcome message */
+.welcome-message {
+  padding-top: 100px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+}

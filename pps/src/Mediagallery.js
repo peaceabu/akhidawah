@@ -1,34 +1,40 @@
-import { initializeApp } from 'firebase/app';
-import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
+import './Mediagallery.css';
+import './Common.css';
+import firebaseConfig from './firebaseConfig';
+import { initializeApp } from 'firebase/app';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAYP5-fxE-1zVLAuIJWLBQWx5daQCTGXUg",
-  authDomain: "kaswa-1d3ad.firebaseapp.com",
-  projectId: "kaswa-1d3ad",
-  storageBucket: "kaswa-1d3ad.appspot.com",
-  messagingSenderId: "395330435248",
-  appId: "1:395330435248:web:7df5635bbc8474b92ea375",  
-};
-const firebaseApp = initializeApp(firebaseConfig);
+
+const firebaseApp = initializeApp(firebaseConfig);	
 const storage = getStorage(firebaseApp);
 
-const getImageUrls = async () => {
-  const imagesRef = ref(storage, 'images'); // Change this to your storage path
-
-  const imageUrls = [];
-
-  const imageList = await listAll(imagesRef);
-  for (const imageRef of imageList.items) {
-    const url = await getDownloadURL(imageRef);
-    imageUrls.push(url);
-  }
-
-  return imageUrls;
-};
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 const ImageGallery = () => {
+  const navigate = useNavigate();
+  const { category } = useParams();
+  const capitalizedCategory = capitalizeFirstLetter(category);
+
+  const storage = getStorage(firebaseApp);
+
+  const getImageUrls = async () => {
+    const imagesRef = ref(storage, `images/${category}`); // Construct the storage path dynamically
+
+    const imageUrls = [];
+
+    const imageList = await listAll(imagesRef);
+    for (const imageRef of imageList.items) {
+      const url = await getDownloadURL(imageRef);
+      imageUrls.push(url);
+    }
+
+    return imageUrls;
+  };
+
   const [imageUrls, setImageUrls] = useState([]);
 
   useEffect(() => {
@@ -38,13 +44,16 @@ const ImageGallery = () => {
     }
 
     fetchImageUrls();
-  }, []);
+  }, [category]);
 
   return (
+    <div id='image-gallery-container'>
+       <h1 className='shared-header'>{capitalizedCategory} Images</h1>
     <div className='galleryDiv'>
       {imageUrls.map((url, index) => (
         <img key={index} src={url} alt={`Image ${index}`} className='img'/>    
       ))}
+    </div>
     </div>
   );
 };
